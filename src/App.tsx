@@ -6,6 +6,7 @@ function App() {
     <div>
       <h1>Welcome to Web Dev</h1>
       <Labs />
+      
     </div>
   );
 }
