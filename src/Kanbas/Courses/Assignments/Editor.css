@@ -1,0 +1,8 @@
+.wd-cancel-save-buttons {
+    display: flex;
+    justify-content: end;
+}
+
+.wd-cancel-save-buttons button {
+    margin-right: 2px;
+}
