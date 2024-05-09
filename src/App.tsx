@@ -6,6 +6,8 @@ function App() {
     return (
         <HashRouter>
             <h1>Chih-Tao Lee</h1>
+            <h2>section: 41239</h2>
+            <a href="https://github.com/Jazzcort/web-dev-su1-2024">GitHub repo</a>
             <div>
                 <Routes>
                     <Route path="/" element={<Navigate to="Labs" />} />
