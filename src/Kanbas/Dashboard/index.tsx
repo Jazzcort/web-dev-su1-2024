@@ -49,14 +49,14 @@ export default function Dashboard() {
                     <div>
                         <a
                             className="wd-dashboard-course-link"
-                            href="#/Kanbas/Courses/Home"
+                            href="#/Kanbas/Courses/1234/Home"
                         >
                             CS1234 React JS
                         </a>
                         <p className="wd-dashboard-course-title">
                             Full Stack software developer
                         </p>
-                        <a href="#/Kanbas/Courses/Home"> Go </a>
+                        <a href="#/Kanbas/Courses/1234/Home"> Go </a>
                     </div>
                 </div>
                 {courses.map((course, ind) => (
@@ -82,12 +82,12 @@ function Course({
             <div>
                 <a
                     className="wd-dashboard-course-link"
-                    href="#/Kanbas/Courses/Home"
+                    href="#/Kanbas/Courses/1234/Home"
                 >
                     {link}
                 </a>
                 <p className="wd-dashboard-course-title">{title}</p>
-                <a href="#/Kanbas/Courses/Home"> Go </a>
+                <a href="#/Kanbas/Courses/1234/Home"> Go </a>
             </div>
         </div>
     );
