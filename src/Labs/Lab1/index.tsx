@@ -78,7 +78,7 @@ export default function Lab1() {
                     </li>
                 </ol>
                 <h5>Unordered List Tag</h5>
-                My favorite books (in no particular order)
+                Professor's favorite books (in no particular order)
                 <ul id="wd-my-books">
                     <li>Dune</li>
                     <li>Lord of the Rings</li>
@@ -86,7 +86,7 @@ export default function Lab1() {
                     <li>Red Mars</li>
                     <li>The Forever War</li>
                 </ul>
-                Your favorite books (in no particular order)
+                My favorite books (in no particular order)
                 <ul id="wd-your-books">
                     <li>The Night Circus</li>
                     <li>Dune</li>
@@ -383,7 +383,10 @@ export default function Lab1() {
                     <a href="https://www.lipsum.com"> click here </a>
                     to get dummy text
                     <br />
-                    <a href="https://github.com/Jazzcort/web-dev-su1-2024">Github repo</a>
+                    <h4>GitHub repo</h4>
+                    Please
+                    <a href="https://github.com/Jazzcort/web-dev-su1-2024"> click here </a>
+                    to my Github repo
                     <br />
                 </form>
             </div>
