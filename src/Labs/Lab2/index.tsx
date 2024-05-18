@@ -3,6 +3,7 @@ import BackgroundColor from "./BackgroundColor";
 import BootstrapGrid from "./BootstrapGrid";
 import BootstrapResponsiveGrid from "./BootstrapResponsiveGrid";
 import Borders from "./Borders";
+import Card from "./Card";
 import Corners from "./Corners";
 import Dimensions from "./Dimensions";
 import FixedPosition from "./FixedPosition";
@@ -120,6 +121,7 @@ export default function Lab2() {
             <StylingAddon />
             <ResponsiveForm />
             <Tab />
+            <Card />
         </div>
         
     );

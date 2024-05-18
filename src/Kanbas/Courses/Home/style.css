@@ -1,14 +1,12 @@
-#wd-course-status-publish {
-    margin: 0 0 10px;
-    display: flex;
+.btn-secondary {
+    --bs-btn-color: #000;
+    --bs-btn-bg: #c7cdd1;
+    --bs-btn-border-color: #c7cdd1;
+    --bs-btn-hover-color: #fff;
 }
-
-#wd-course-status-publish button {
-    margin: 0 4px 0 0;
+.bg-secondary {
+    background-color: #c7cdd1 !important;
 }
-
-#wd-course-status {
-    display: flex;
-    flex-wrap: wrap;
-    width: 200px
+.border-gray {
+    border: 1px solid gray;
 }
