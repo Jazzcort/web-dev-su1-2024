@@ -4,6 +4,7 @@ import { BiImport } from "react-icons/bi";
 import { LiaFileImportSolid } from "react-icons/lia";
 import { SiGoogleanalytics } from "react-icons/si";
 import { TfiAnnouncement } from "react-icons/tfi";
+import { IoIosNotifications } from "react-icons/io";
 import "./style.css"
 export default function CourseStatus() {
     return (
@@ -45,8 +46,14 @@ export default function CourseStatus() {
                 <TfiAnnouncement className="me-2 fs-5"/>
                 New Announcement
             </button>
-            <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">New Analytics</button>
-            <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">View Course Notifications</button>
+            <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
+                <SiGoogleanalytics className="me-2 fs-5"/>
+                New Analytics
+            </button>
+            <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
+                <IoIosNotifications className="me-2 fs-5"/>
+                View Course Notifications
+            </button>
             {/* Complete the rest of the buttons */}
         </div>
     );

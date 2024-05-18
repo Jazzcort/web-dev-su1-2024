@@ -9,3 +9,22 @@ body * {
 #wd-kanbas-navigation {
     height: 100vh;
 }
+
+#wd-modules-controls .btn-secondary {
+    --bs-btn-color: #000;
+    --bs-btn-bg: #c7cdd1;
+    --bs-btn-border-color: #c7cdd1;
+    --bs-btn-hover-color: #fff;
+}
+
+#wd-modules .bg-secondary {
+    background-color: #c7cdd1 !important;
+}
+
+.border-gray {
+    border: 1px solid gray;
+}
+
+#wd-modules .wd-lesson {
+    border-left: green solid 3px;
+}
