@@ -9,7 +9,7 @@ export default function Grades() {
         <div id="wd-grades" className="mt-4 ms-2">
             <GradesControlButtons />
             <SearchingBars />
-            <button className="btn btn-lg btn-secondary">
+            <button className="btn btn-lg btn-secondary rounded-1">
                 <CiFilter className="fs-3 me-2" />
                 Apply Filters
             </button>
