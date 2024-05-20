@@ -3,7 +3,7 @@ import "./style.css";
 const courses = [
     {
         img: "images/app.jpg",
-        link: "CS6620 Mobile Application Development",
+        link: "CS6620 Mobile Application",
         title: "Full Stack software developer",
     },
     {
@@ -100,7 +100,7 @@ function Course({
     return (
         <div className="wd-dashboard-course col" style={{ width: "280px", marginTop: "35px"}}>
             <div className="card">
-                <img src={img} />
+                <img src={img} style={{height: "140px"}}/>
                 <div className="card-body">
                     <a
                         className="wd-dashboard-course-link"
