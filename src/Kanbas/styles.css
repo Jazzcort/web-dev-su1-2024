@@ -28,3 +28,25 @@ body * {
 #wd-modules .wd-lesson {
     border-left: green solid 6px;
 }
+
+#wd-collapsed-courses-navigation > .list-group-item.active {
+    color: black !important;
+    background-color: white;
+    border-left: 3px solid black !important;
+    transition: 0.1s ease-in-out;
+}
+#wd-collapsed-courses-navigation >.list-group-item:hover {
+    text-decoration: underline;
+}
+
+#wd-collapsed-courses-navigation >.list-group-item {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+#wd-collapsed-kanbas-navigation {
+    display: flex;
+    position: absolute;
+    z-index: 1;
+    width: 768px;
+}
