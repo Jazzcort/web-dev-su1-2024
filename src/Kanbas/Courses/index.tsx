@@ -9,9 +9,9 @@ import { IoReorderThree } from "react-icons/io5";
 export default function Courses() {
     return (
         <div id="wd-courses">
-            <IoReorderThree className="d-inline-block align-middle fs-1 me-4 mb-2 text-danger" />
-            <h2 className="d-inline-block text-danger">Course 1234</h2>
-            <hr />
+            <IoReorderThree className="d-none d-md-inline-block align-middle fs-1 me-4 mb-2 text-danger" />
+            <h2 className="d-none d-md-inline-block text-danger">Course 1234</h2>
+            <hr className="d-none d-md-block" />
             <div className="d-flex">
                 <div className="d-none d-md-block">
                     <CoursesNavigation />
