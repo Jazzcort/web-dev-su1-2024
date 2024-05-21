@@ -45,8 +45,18 @@ body * {
 }
 
 #wd-collapsed-kanbas-navigation {
-    display: flex;
-    position: absolute;
-    z-index: 1;
-    width: 768px;
+    position: fixed;
+    z-index: 20;
+    background-color: #fff;
+    min-width: 768px;
+    max-width: 1000px;
+    width: 100vw;
+    height: 100vh;
+    transform: translateX(-1000px);
+    transition: 0.2s ease-in-out;
+}
+
+#wd-collapsed-kanbas-navigation.kanbas-nav-active {
+    transform: translateX(0);
+    transition: 0.2s ease-in-out;
 }

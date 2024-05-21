@@ -22,6 +22,7 @@ export default function CollapsedKanbasNav({
                 id="wd-account-link"
                 href="#/Kanbas/Account"
                 className="list-group-item text-danger bg-white d-flex border-0 align-items-center"
+                onClick={closeKanbasNav}
             >
                 <FaRegCircleUser className="fs-1 text me-4" />
                 <span>Account</span>
@@ -30,6 +31,7 @@ export default function CollapsedKanbasNav({
                 id="wd-dashboard-link"
                 href="#/Kanbas/Dashboard"
                 className="list-group-item text-center bg-white text-danger border-0 d-flex align-items-center"
+                onClick={closeKanbasNav}
             >
                 <AiOutlineDashboard className="fs-1 me-4" />
                 <span>Dashboard</span>
@@ -38,6 +40,7 @@ export default function CollapsedKanbasNav({
                 id="wd-course-link"
                 href="#/Kanbas/Courses"
                 className="list-group-item text-danger text-center bg-white border-0 d-flex align-items-center"
+                onClick={closeKanbasNav}
             >
                 <LiaBookSolid className="fs-1 me-4" /> 
                 <span>Courses</span> 
@@ -46,6 +49,7 @@ export default function CollapsedKanbasNav({
                 id="wd-calendar-link"
                 href="#/Kanbas/Calendar"
                 className="list-group-item text-danger text-center bg-white border-0 d-flex align-items-center"
+                onClick={closeKanbasNav}
             >
                 <IoCalendarOutline className="fs-1 me-4" /> 
                 <span>Calendar</span>
@@ -54,6 +58,7 @@ export default function CollapsedKanbasNav({
                 id="wd-inbox-link"
                 href="#/Kanbas/Inbox"
                 className="list-group-item text-danger text-center bg-white border-0 d-flex align-items-center"
+                onClick={closeKanbasNav}
             >
                 <FaInbox className="fs-1 me-4" />
                 <span>Inbox</span>
@@ -62,6 +67,7 @@ export default function CollapsedKanbasNav({
                 id="wd-labs-link"
                 href="#/Labs"
                 className="list-group-item text-danger text-center bg-white border-0 d-flex align-items-center"
+                onClick={closeKanbasNav}
             >
                 <LiaCogSolid className="fs-1 me-4" /> 
                 <span>Labs</span>

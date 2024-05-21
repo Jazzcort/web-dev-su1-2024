@@ -7,59 +7,80 @@ import { RxCross2 } from "react-icons/rx";
 import CollapsedCoursesNav from "./CollapsedCoursesNav";
 import Courses from "./Courses";
 import "./styles.css";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import CollapsedKanbasNav from "./CollapsedKanbasNav";
 
 export default function Kanbas() {
     const [coursesNav, setCoursesNav] = useState(false);
     const [kanbasNav, setKanbasNav] = useState(false);
+    let collapsedKanvasRef = useRef<HTMLElement | null>(null);
     const closeKanbasNav = useCallback(() => {
         setKanbasNav(false);
     }, []);
 
+    console.log(collapsedKanvasRef)
+
+    useEffect(() => {
+        collapsedKanvasRef.current = document.getElementById("wd-collapsed-kanbas-navigation");
+    })
+
+    useEffect(() => {
+        if (kanbasNav) {
+            collapsedKanvasRef.current?.classList.add("kanbas-nav-active")
+        } else {
+            collapsedKanvasRef.current?.classList.remove("kanbas-nav-active") 
+        }
+
+    }, [kanbasNav])
+
     return (
-        <div id="wd-kanbas" className="h-100">
-            <div className="d-flex justify-content-between d-md-none bg-black">
-                <button
-                    onClick={() => {
-                        setKanbasNav(true);
-                    }}
-                    className="btn btn-lg bg-black text-white"
-                >
-                    <IoReorderThree />
-                </button>
-                <h4 className="text-white text-center align-middle mt-2 text-nowrap">
-                    Course 1234
-                </h4>
-                <button
-                    onClick={() => {
-                        setCoursesNav((old) => !old);
-                    }}
-                    className="btn btn-lg bg-black text-white"
-                >
-                    {coursesNav ? (
-                        <RxCross2 className="" />
-                    ) : (
-                        <IoIosArrowDown />
-                    )}
-                </button>
-            </div>
-            {kanbasNav && (
-                <CollapsedKanbasNav closeKanbasNav={closeKanbasNav} />
-            )}
-            {coursesNav && <CollapsedCoursesNav />}
-            <div className="d-flex">
-                <div className="d-none d-md-block bg-black pt-2">
-                    <KanbasNavigation />
+        <>
+            <CollapsedKanbasNav closeKanbasNav={closeKanbasNav} />
+
+            <div id="wd-kanbas" className="h-100">
+                <div className="d-flex justify-content-between d-md-none bg-black">
+                    <button
+                        onClick={() => {
+                            setKanbasNav(true);
+                        }}
+                        className="btn btn-lg bg-black text-white"
+                    >
+                        <IoReorderThree />
+                    </button>
+                    <h4 className="text-white text-center align-middle mt-2 text-nowrap">
+                        Course 1234
+                    </h4>
+                    <button
+                        onClick={() => {
+                            setCoursesNav((old) => !old);
+                        }}
+                        className="btn btn-lg bg-black text-white"
+                    >
+                        {coursesNav ? (
+                            <RxCross2 className="" />
+                        ) : (
+                            <IoIosArrowDown />
+                        )}
+                    </button>
                 </div>
-                <div className="flex-fill p-4">
-                    <Routes>
-                        <Route path="/" element={<Navigate to="Dashboard" />} />
-                        <Route path="Dashboard" element={<Dashboard />} />
-                        <Route path="Courses/:id/*" element={<Courses />} />
-                    </Routes>
+
+                {coursesNav && <CollapsedCoursesNav />}
+                <div className="d-flex">
+                    <div className="d-none d-md-block bg-black pt-2">
+                        <KanbasNavigation />
+                    </div>
+                    <div className="flex-fill p-4">
+                        <Routes>
+                            <Route
+                                path="/"
+                                element={<Navigate to="Dashboard" />}
+                            />
+                            <Route path="Dashboard" element={<Dashboard />} />
+                            <Route path="Courses/:id/*" element={<Courses />} />
+                        </Routes>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
