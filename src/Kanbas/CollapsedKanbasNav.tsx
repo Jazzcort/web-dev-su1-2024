@@ -15,12 +15,12 @@ export default function CollapsedKanbasNav({
             className="rounded-0"
         >
             <div className="d-flex justify-content-between align-items-center mt-3 mb-3">
-                <span className="ms-2 fw-bold text-danger" style={{fontSize: "45px"}}>
-                    <GiBoomerangCross className="ms-3 me-3" />
+                <span className="ms-2 fw-bold text-danger text-nowrap" style={{fontSize: "45px"}}>
+                    <GiBoomerangCross className="ms-3 me-4" />
                     Kanbas
                 </span>
                 <button className="btn" onClick={closeKanbasNav}>
-                    <RxCross2 />
+                    <RxCross2 className="me-3"/>
                 </button>
             </div>
             <div className="list-group rounded-0 ms-5">

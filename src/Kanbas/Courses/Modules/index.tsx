@@ -2,6 +2,7 @@ import LessonControlButtons from "./LessonControlButtons";
 import ModuleControlButtons from "./ModuleControlButtons";
 import ModulesControls from "./ModulesControls";
 import { BsGripVertical } from "react-icons/bs";
+import "./styles.css";
 export default function Modules() {
     return (
         <div>
@@ -12,17 +13,22 @@ export default function Modules() {
             <br />
             <ul id="wd-modules" className="list-group rounded-0 text-nowrap">
                 <li className="wd-module list-group-item p-0 mb-5 fs-5 border-gray">
-                    <div className="wd-title p-3 ps-2 bg-secondary fw-bold">
+                    <div className="wd-title p-3 ps-2 bg-secondary fw-bold d-flex">
                         <BsGripVertical className="me-2 fs-3" />
-                        Week 1, Lecture 1 - Course Introduction, Syllabus,
-                        Agenda
+                        <p className="wd-title-text flex-fill mb-0">
+                            Week 1, Lecture 1 - Course Introduction, Syllabus,
+                            Agenda
+                        </p>
+
                         <ModuleControlButtons />
                     </div>
                     <ul className="wd-lessons list-group rounded-0">
                         <li className="wd-lesson list-group-item p-3 ps-1">
-                            <span className="wd-title fw-bold">
+                            <span className="wd-title fw-bold d-flex">
                                 <BsGripVertical className="me-2 fs-3" />
-                                LEARNING OBJECTIVES
+                                <p className="wd-title-text flex-fill mb-0">
+                                    LEARNING OBJECTIVES
+                                </p>
                                 <LessonControlButtons />
                             </span>
                             {/* <ul className="wd-content">
@@ -44,9 +50,11 @@ export default function Modules() {
                             </ul> */}
                         </li>
                         <li className="wd-lesson list-group-item p-3 ps-1">
-                            <span className="wd-title fw-bold">
+                            <span className="wd-title fw-bold d-flex">
                                 <BsGripVertical className="me-2 fs-3" />
-                                Reading
+                                <p className="wd-title-text flex-fill mb-0">
+                                    Reading
+                                </p>
                                 <LessonControlButtons />
                             </span>
                             {/* <ul>
@@ -93,9 +101,12 @@ export default function Modules() {
                     </ul>
                 </li>
                 <li className="wd-module list-group-item p-0 mb-5 fs-5 border-gray">
-                    <div className="wd-title p-3 ps-2 bg-secondary fw-bold">
+                    <div className="wd-title p-3 ps-2 bg-secondary fw-bold d-flex">
                         <BsGripVertical className="me-2 fs-3" />
-                        Week 1, Lecture 2 - Formatting User Interface with HTML
+                        <p className="wd-title-text flex-fill mb-0">
+                            Week 1, Lecture 2 - Formatting User Interface with
+                            HTML
+                        </p>
                         <ModuleControlButtons />
                     </div>
                     <ul className="wd-lessons list-group rounded-0">
@@ -105,7 +116,7 @@ export default function Modules() {
                                 LEARNING OBJECTIVES
                                 <LessonControlButtons />
                             </span>
-                            <ul className="wd-content">
+                            <ul className="wd-content text-wrap">
                                 <li className="wd-content-item">
                                     Learn how to create user interfaces with
                                     HTML
@@ -126,12 +137,10 @@ export default function Modules() {
                             </span>
                             <ul className="wd-content">
                                 <li className="wd-content-item">
-                                    Full Stack Developer - Chapter 1 -
-                                    Introduction
+                                    Full Stack Developer - Chapter 1
                                 </li>
                                 <li className="wd-content-item">
-                                    Full Stack Developer - Chapter 2 - Creating
-                                    User Interfaces With HTML
+                                    Full Stack Developer - Chapter 2
                                 </li>
                             </ul>
                         </li>
@@ -146,11 +155,10 @@ export default function Modules() {
                                     Introduction to HTML and the DOM
                                 </li>
                                 <li className="wd-content-item">
-                                    Formatting Web content with Headings and
-                                    Paragraphs
+                                    Formatting Web content
                                 </li>
                                 <li className="wd-content-item">
-                                    Formatting content with Lists and Tables
+                                    Formatting content with Lists
                                 </li>
                                 <li className="wd-content-item">
                                     Creating Web Forms
@@ -162,7 +170,7 @@ export default function Modules() {
                                     Embedding content wiith Iframes
                                 </li>
                                 <li className="wd-content-item">
-                                    Drawing with Scalable Vector Graphics
+                                    Drawing with Vector Graphics
                                 </li>
                             </ul>
                         </li>

@@ -1,0 +1,13 @@
+p.wd-title-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+}
+
+p.wd-content-item-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+}

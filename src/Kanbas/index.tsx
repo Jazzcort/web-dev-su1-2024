@@ -40,9 +40,8 @@ export default function Kanbas() {
 
     return (
         <>
-            <CollapsedKanbasNav closeKanbasNav={closeKanbasNav} />
-
             <div id="wd-kanbas" className="h-100">
+                <CollapsedKanbasNav closeKanbasNav={closeKanbasNav} />
                 <div className="d-flex justify-content-between d-md-none bg-black">
                     <button
                         onClick={() => {
@@ -70,7 +69,7 @@ export default function Kanbas() {
                             )}
                         </button>
                     ) : (
-                        <div style={{width: "53.81px"}}></div>
+                        <div style={{ width: "53.81px" }}></div>
                     )}
                 </div>
 

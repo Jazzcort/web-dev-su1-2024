@@ -12,10 +12,10 @@ export default function Assignments() {
                 <input
                     id="wd-search-assignment"
                     placeholder="&#xf002; Search..."
-                    className="flex-fill ms-1 me-5 form-control form-control-sm fs-4"
+                    className="flex-fill ms-1 me-4 form-control form-control-sm fs-4"
                     style={{
                         fontFamily: "Arial, FontAwesome",
-                        minWidth: "160px",
+                        minWidth: "50px",
                     }}
                 />
                 <button
