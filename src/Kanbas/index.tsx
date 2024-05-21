@@ -9,29 +9,34 @@ import Courses from "./Courses";
 import "./styles.css";
 import { useState, useCallback, useEffect, useRef } from "react";
 import CollapsedKanbasNav from "./CollapsedKanbasNav";
+import { useLocation } from "react-router";
 
 export default function Kanbas() {
     const [coursesNav, setCoursesNav] = useState(false);
     const [kanbasNav, setKanbasNav] = useState(false);
-    let collapsedKanvasRef = useRef<HTMLElement | null>(null);
+    const collapsedKanvasRef = useRef<HTMLElement | null>(null);
+    const { pathname } = useLocation();
     const closeKanbasNav = useCallback(() => {
         setKanbasNav(false);
     }, []);
 
-    console.log(collapsedKanvasRef)
+    const closeCoursesNav = useCallback(() => {
+        setCoursesNav(false);
+    }, []);
 
     useEffect(() => {
-        collapsedKanvasRef.current = document.getElementById("wd-collapsed-kanbas-navigation");
-    })
+        collapsedKanvasRef.current = document.getElementById(
+            "wd-collapsed-kanbas-navigation"
+        );
+    });
 
     useEffect(() => {
         if (kanbasNav) {
-            collapsedKanvasRef.current?.classList.add("kanbas-nav-active")
+            collapsedKanvasRef.current?.classList.add("kanbas-nav-active");
         } else {
-            collapsedKanvasRef.current?.classList.remove("kanbas-nav-active") 
+            collapsedKanvasRef.current?.classList.remove("kanbas-nav-active");
         }
-
-    }, [kanbasNav])
+    }, [kanbasNav]);
 
     return (
         <>
@@ -50,21 +55,28 @@ export default function Kanbas() {
                     <h4 className="text-white text-center align-middle mt-2 text-nowrap">
                         Course 1234
                     </h4>
-                    <button
-                        onClick={() => {
-                            setCoursesNav((old) => !old);
-                        }}
-                        className="btn btn-lg bg-black text-white"
-                    >
-                        {coursesNav ? (
-                            <RxCross2 className="" />
-                        ) : (
-                            <IoIosArrowDown />
-                        )}
-                    </button>
+
+                    {pathname.includes("Courses") ? (
+                        <button
+                            onClick={() => {
+                                setCoursesNav((old) => !old);
+                            }}
+                            className="btn btn-lg bg-black text-white"
+                        >
+                            {coursesNav ? (
+                                <RxCross2 className="" />
+                            ) : (
+                                <IoIosArrowDown />
+                            )}
+                        </button>
+                    ) : (
+                        <div style={{width: "53.81px"}}></div>
+                    )}
                 </div>
 
-                {coursesNav && <CollapsedCoursesNav />}
+                {coursesNav && (
+                    <CollapsedCoursesNav closeCoursesNav={closeCoursesNav} />
+                )}
                 <div className="d-flex">
                     <div className="d-none d-md-block bg-black pt-2">
                         <KanbasNavigation />
