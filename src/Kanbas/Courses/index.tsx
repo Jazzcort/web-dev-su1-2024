@@ -4,13 +4,20 @@ import Grades from "./Grades";
 import Home from "./Home";
 import Modules from "./Modules";
 import CoursesNavigation from "./Navigation";
-import { Navigate, Route, Routes } from "react-router";
+import { Navigate, Route, Routes, useParams, useLocation } from "react-router";
 import { IoReorderThree } from "react-icons/io5";
+import { FaAlignJustify } from "react-icons/fa6";
+import { courses } from "../Database";
 export default function Courses() {
+    const { cid } = useParams();
+    const course = courses.find((c) => c._id === cid);
+    const { pathname } = useLocation();
     return (
         <div id="wd-courses">
-            <IoReorderThree className="d-none d-md-inline-block align-middle fs-1 me-4 mb-2 text-danger" />
-            <h2 className="d-none d-md-inline-block text-danger">Course 1234</h2>
+            <h2 className="d-none d-md-inline-block text-danger">
+                <FaAlignJustify className="me-4 fs-4 mb-1" />
+                {course && course.name} &gt; {pathname.split("/")[4]}
+            </h2>
             <hr className="d-none d-md-block" />
             <div className="d-flex">
                 <div className="d-none d-md-block">
