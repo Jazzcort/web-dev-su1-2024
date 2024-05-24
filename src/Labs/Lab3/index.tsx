@@ -22,6 +22,7 @@ export default function Lab3() {
             <LegacyFunctions />
             <ArrowFunctions />
             <ImpliedReturn />
+            
         </div>
     )
 }
