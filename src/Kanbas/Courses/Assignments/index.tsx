@@ -5,7 +5,14 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { FaPenToSquare } from "react-icons/fa6";
 import "./styles.css";
 import AssignmentControlButtons from "./AssignmentControlButtons";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+import { assignments } from "../../Database";
 export default function Assignments() {
+    const { cid } = useParams();
+    const courseAssignments = assignments.filter(
+        (assignment) => assignment.course === cid
+    );
     return (
         <div id="wd-assignments">
             <div className="d-flex text-nowrap mb-5">
@@ -58,7 +65,37 @@ export default function Assignments() {
             </div>
 
             <ul id="wd-assignment-list" className="list-group rounded-0">
-                <li className="wd-assignment-list-item list-group-item d-flex align-items-center p-4">
+                {courseAssignments.map((a) => (
+                    <li className="wd-assignment-list-item list-group-item d-flex align-items-center p-4">
+                        <BsGripVertical
+                            className="me-3 fs-3"
+                            style={{ minWidth: "28px" }}
+                        />
+                        <FaPenToSquare
+                            className="fs-4 me-3 text-success"
+                            style={{ minWidth: "28px" }}
+                        />
+                        <div className="text-secondary flex-fill fs-5 me-3">
+                            <Link
+                                key={`/Kanbas/Courses/${cid}/Assignments/${a._id}`}
+                                to={`/Kanbas/Courses/${cid}/Assignments/${a._id}`}
+                                className="wd-assignment-link text-black text-decoration-none fs-4 fw-bold"
+                            >
+                                {a.title}
+                            </Link>
+                            <br />
+                            <span className="text-danger fw-medium">
+                                Multiple Modules
+                            </span>{" "}
+                            | <strong>Not available until</strong> May 6 at
+                            12:00am | <strong>Due</strong> May 13 at 11:59pm |
+                            100 pts
+                        </div>
+                        <AssignmentControlButtons />
+                    </li>
+                ))}
+
+                {/* <li className="wd-assignment-list-item list-group-item d-flex align-items-center p-4">
                     <BsGripVertical
                         className="me-3 fs-3"
                         style={{ minWidth: "28px" }}
@@ -132,7 +169,7 @@ export default function Assignments() {
                         | <strong>Due</strong> May 27 at 11:59pm | 100 pts
                     </div>
                     <AssignmentControlButtons />
-                </li>
+                </li> */}
             </ul>
         </div>
     );

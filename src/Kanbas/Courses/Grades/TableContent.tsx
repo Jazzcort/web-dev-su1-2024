@@ -1,3 +1,5 @@
+import { useParams } from "react-router";
+import { enrollments, users, grades, assignments } from "../../Database";
 const student = [
     {
         name: "Heidi Robinson",
@@ -107,6 +109,13 @@ const student = [
 ];
 
 export default function TableContent() {
+    const { cid } = useParams();
+    const students = enrollments.filter(
+        (enrollment) => enrollment.course === cid
+    );
+    const courseAssignments = assignments.filter(
+        (assignment) => assignment.course === cid
+    );
     return (
         <div className="mt-4 table-responsive">
             <table className="table table-striped text-nowrap">
@@ -115,38 +124,51 @@ export default function TableContent() {
                         <th scope="col" className="border align-middle">
                             Student Name
                         </th>
-                        <th
-                            scope="col"
-                            className="text-center align-middle border"
-                        >
-                            <span className="d-block">A1 SETUP</span>
-                            <span className="fs-6 fw-medium">out of 100</span>
-                        </th>
-                        <th
-                            scope="col"
-                            className="text-center align-middle border"
-                        >
-                            <span className="d-block">A2 HTML</span>
-                            <span className="fs-6 fw-medium">out of 100</span>
-                        </th>
-                        <th
-                            scope="col"
-                            className="text-center align-middle border"
-                        >
-                            <span className="d-block">A3 CSS</span>
-                            <span className="fs-6 fw-medium">out of 100</span>
-                        </th>
-                        <th
-                            scope="col"
-                            className="text-center align-middle border"
-                        >
-                            <span className="d-block">A4 BOOTSTRAP</span>
-                            <span className="fs-6 fw-medium">out of 100</span>
-                        </th>
+                        {courseAssignments.map((assignment) => (
+                            <th
+                                scope="col"
+                                className="text-center align-middle border"
+                            >
+                                <span className="d-block">
+                                    {assignment.title}
+                                </span>
+                                <span className="fs-6 fw-medium">
+                                    out of 100
+                                </span>
+                            </th>
+                        ))}
                     </tr>
                 </thead>
                 <tbody>
-                    {student.map((s, ind) => <TableRow {...s} key={ind}/>)}
+                    {students.map((student) => {
+                        const user = users.find((u) => u._id === student.user);
+                        return (
+                            <tr>
+                                <th
+                                    scope="row"
+                                    className="text-danger border align-middle"
+                                >
+                                    {`${user?.firstName} ${user?.lastName}`}
+                                </th>
+                                {courseAssignments.map((assignment) => {
+                                    const grade = grades.find(
+                                        (grade) =>
+                                            grade.student === student.user &&
+                                            grade.assignment === assignment._id
+                                    );
+                                    return grade ? (
+                                        <td className="text-center border align-middle">
+                                            {grade?.grade}%
+                                        </td>
+                                    ) : (
+                                        <td className="text-center border align-middle">
+                                            -
+                                        </td>
+                                    );
+                                })}
+                            </tr>
+                        );
+                    })}
                 </tbody>
             </table>
         </div>

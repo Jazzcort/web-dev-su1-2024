@@ -1,5 +1,10 @@
 import "./Editor.css";
+import { useParams } from "react-router";
+import { assignments } from "../../Database";
+import { Link } from "react-router-dom";
 export default function AssignmentEditor() {
+    const { aid, cid } = useParams();
+    const assignment = assignments.find(a => a._id === aid);
     return (
         <div id="wd-assignments-editor" className="container ms-1">
             <div className="">
@@ -10,7 +15,7 @@ export default function AssignmentEditor() {
                 <input
                     id="wd-name"
                     className="form-control row mb-4"
-                    value="A1 - ENV + HTML"
+                    value={assignment?.title}
                 />
             </div>
 
@@ -227,9 +232,13 @@ export default function AssignmentEditor() {
                 </div>
             </div>
             <hr />
-            <div className="wd-cancel-save-buttons">
-                <button className="btn btn-secondary">Cancel</button>
-                <button className="btn btn-primary">Save</button>
+            <div id="wd-cancel-save-buttons">
+                <Link to={`/Kanbas/Courses/${cid}/Assignments`} className="btn btn-secondary me-1 rounded-1">
+                    Cancel
+                </Link>
+                <Link to={`/Kanbas/Courses/${cid}/Assignments`} className="btn btn-danger rounded-1">
+                    Save
+                </Link>
             </div>
         </div>
     );

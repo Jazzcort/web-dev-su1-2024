@@ -1,8 +1,12 @@
-.wd-cancel-save-buttons {
+#wd-cancel-save-buttons {
     display: flex;
     justify-content: end;
 }
 
-.wd-cancel-save-buttons button {
-    margin-right: 2px;
+#wd-cancel-save-buttons .btn-secondary {
+    --bs-btn-color: #000;
+    --bs-btn-bg: #c7cdd1;
+    --bs-btn-border-color: #c7cdd1;
+    --bs-btn-hover-color: #fff;
 }
+
