@@ -8,9 +8,10 @@ import { TbHexagonLetterP, TbSquareRoundedLetterZ } from "react-icons/tb";
 import { TfiWrite } from "react-icons/tfi";
 import { GrScorecard } from "react-icons/gr";
 export default function CollapsedCoursesNav({
-    closeCoursesNav,
+    closeCoursesNav, cid
 }: {
     closeCoursesNav: any;
+    cid: string
 }) {
     const { pathname } = useLocation();
     return pathname.includes("Courses") ? (
@@ -20,7 +21,7 @@ export default function CollapsedCoursesNav({
         >
             <a
                 id="wd-course-home-link"
-                href="#/Kanbas/Courses/1234/Home"
+                href={`#/Kanbas/Courses/${cid}/Home`}
                 className={`list-group-item text-danger border border-0 ${
                     pathname.includes("Home") ? "active" : ""
                 }`}
@@ -31,7 +32,7 @@ export default function CollapsedCoursesNav({
             </a>
             <a
                 id="wd-course-modules-link"
-                href="#/Kanbas/Courses/1234/Modules"
+                href={`#/Kanbas/Courses/${cid}/Modules`}
                 className={`list-group-item text-danger border border-0 ${
                     pathname.includes("Modules") ? "active" : ""
                 }`}
@@ -42,7 +43,7 @@ export default function CollapsedCoursesNav({
             </a>
             <a
                 id="wd-course-piazza-link"
-                href="#/Kanbas/Courses/1234/Piazza"
+                href={`#/Kanbas/Courses/${cid}/Piazza`}
                 className={`list-group-item text-danger border border-0 ${
                     pathname.includes("Piazza") ? "active" : ""
                 }`}
@@ -53,7 +54,7 @@ export default function CollapsedCoursesNav({
             </a>
             <a
                 id="wd-course-zoom-link"
-                href="#/Kanbas/Courses/1234/Zoom"
+                href={`#/Kanbas/Courses/${cid}/Zoom`}
                 className={`list-group-item text-danger border border-0 ${
                     pathname.includes("Zoom") ? "active" : ""
                 }`}
@@ -64,7 +65,7 @@ export default function CollapsedCoursesNav({
             </a>
             <a
                 id="wd-course-quizzes-link"
-                href="#/Kanbas/Courses/1234/Assignments"
+                href={`#/Kanbas/Courses/${cid}/Assignments`}
                 className={`list-group-item text-danger border border-0 ${
                     pathname.includes("Assignments") ? "active" : ""
                 }`}
@@ -75,7 +76,7 @@ export default function CollapsedCoursesNav({
             </a>
             <a
                 id="wd-course-assignments-link"
-                href="#/Kanbas/Courses/1234/Quizzes"
+                href={`#/Kanbas/Courses/${cid}/Quizzes`}
                 className={`list-group-item text-danger border border-0 ${
                     pathname.includes("Quizzes") ? "active" : ""
                 }`}
@@ -86,7 +87,7 @@ export default function CollapsedCoursesNav({
             </a>
             <a
                 id="wd-course-grades-link"
-                href="#/Kanbas/Courses/1234/Grades"
+                href={`#/Kanbas/Courses/${cid}/Grades`}
                 className={`list-group-item text-danger border border-0 ${
                     pathname.includes("Grades") ? "active" : ""
                 }`}

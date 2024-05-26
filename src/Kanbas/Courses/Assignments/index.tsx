@@ -66,7 +66,7 @@ export default function Assignments() {
 
             <ul id="wd-assignment-list" className="list-group rounded-0">
                 {courseAssignments.map((a) => (
-                    <li className="wd-assignment-list-item list-group-item d-flex align-items-center p-4">
+                    <li key={a._id} className="wd-assignment-list-item list-group-item d-flex align-items-center p-4">
                         <BsGripVertical
                             className="me-3 fs-3"
                             style={{ minWidth: "28px" }}

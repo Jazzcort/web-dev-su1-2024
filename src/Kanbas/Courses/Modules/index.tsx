@@ -8,7 +8,6 @@ import "./styles.css";
 export default function Modules() {
     const { cid } = useParams();
     const courseModules = modules.filter((m) => m.course === cid);
-    console.log(courseModules);
     return (
         <div>
             <ModulesControls />
