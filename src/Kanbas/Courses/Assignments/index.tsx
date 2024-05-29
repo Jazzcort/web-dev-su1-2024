@@ -8,6 +8,9 @@ import AssignmentControlButtons from "./AssignmentControlButtons";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { assignments } from "../../Database";
+
+const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
 export default function Assignments() {
     const { cid } = useParams();
     const courseAssignments = assignments.filter(
@@ -66,7 +69,10 @@ export default function Assignments() {
 
             <ul id="wd-assignment-list" className="list-group rounded-0">
                 {courseAssignments.map((a) => (
-                    <li key={a._id} className="wd-assignment-list-item list-group-item d-flex align-items-center p-4">
+                    <li
+                        key={a._id}
+                        className="wd-assignment-list-item list-group-item d-flex align-items-center p-4"
+                    >
                         <BsGripVertical
                             className="me-3 fs-3"
                             style={{ minWidth: "28px" }}
@@ -87,9 +93,9 @@ export default function Assignments() {
                             <span className="text-danger fw-medium">
                                 Multiple Modules
                             </span>{" "}
-                            | <strong>Not available until</strong> May 6 at
-                            12:00am | <strong>Due</strong> May 13 at 11:59pm |
-                            100 pts
+                            | <strong>Not available until</strong> {getDate(a.available_from? a.available_from : "")} at
+                            12:00am | <strong>Due</strong> {getDate(a.due_date? a.due_date : "")} at 11:59pm |
+                            100 pts{" "}
                         </div>
                         <AssignmentControlButtons />
                     </li>
@@ -173,4 +179,18 @@ export default function Assignments() {
             </ul>
         </div>
     );
+}
+
+function getDate(date_str: string) {
+    const date = new Date(date_str + "T00:00:00.000-05:00");
+
+    if (Number.isNaN(date.getMonth())) {
+        return "TBN"
+    }
+
+    let res = "";
+    res += month[date.getMonth()] + " "
+    res += date.getDate()
+
+    return res;
 }

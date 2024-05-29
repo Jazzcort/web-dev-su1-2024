@@ -24,13 +24,7 @@ export default function AssignmentEditor() {
                 className="row form-control mb-3"
                 style={{ height: "200px" }}
             >
-                The assignment is available online Submit a link to the landing
-                page of your Web application running on Netlify. The landing
-                page should include the following: Your full name and section
-                Links to each of the lab assignments Link to the Kanbas
-                application Links to all relevant source code repositories The
-                Kanbas application should include a link to navigate back to the
-                landing page.
+                {assignment?.description}
             </textarea>
 
             <div className="row mb-3">
@@ -44,7 +38,7 @@ export default function AssignmentEditor() {
                     <input
                         className="form-control"
                         id="wd-points"
-                        value={100}
+                        value={assignment?.points}
                     />
                 </div>
             </div>
@@ -196,7 +190,7 @@ export default function AssignmentEditor() {
                             className="form-control mb-2"
                             type="date"
                             id="wd-due-date"
-                            value="2024-05-13"
+                            value={assignment?.due_date}
                         />
                         <div className="container m-0 p-0">
                             <div className="row">
@@ -211,7 +205,7 @@ export default function AssignmentEditor() {
                                         className="form-control"
                                         type="date"
                                         id="wd-available-from"
-                                        value="2024-05-06"
+                                        value={assignment?.available_from}
                                     />
                                 </div>
                                 <div className="col-6">
@@ -223,7 +217,7 @@ export default function AssignmentEditor() {
                                         className="form-control"
                                         type="date"
                                         id="wd-available-until"
-                                        value="2024-05-20"
+                                        value={assignment?.available_untill}
                                     />
                                 </div>
                             </div>
