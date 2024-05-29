@@ -95,7 +95,7 @@ export default function Assignments() {
                             </span>{" "}
                             | <strong>Not available until</strong> {getDate(a.available_from? a.available_from : "")} at
                             12:00am | <strong>Due</strong> {getDate(a.due_date? a.due_date : "")} at 11:59pm |
-                            100 pts{" "}
+                            {a.points? a.points : "-"} pts{" "}
                         </div>
                         <AssignmentControlButtons />
                     </li>
