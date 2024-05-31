@@ -31,52 +31,69 @@ import TodoItem from "./todos/TodoItem";
 import TodoList from "./todos/TodoList";
 import Highlight from "./Highlight";
 import PathParameters from "./PathParameters";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 export default function Lab3() {
-    console.log('Hello World!');
+    console.log("Hello World!");
+    const [show, setShow] = useState(false);
+    const { todos } = useSelector((state: any) => state.todosReducer);
     return (
         <div id="wd-lab3" className="container-fluid">
             <h3>Lab3 - Javascript</h3>
-            <VariablesAndConstants />
-            <VariableTypes />
-            <BooleanVariables />
-            <IfElse />
-            <TernaryOperator />
-            <ConditionalOutputIfElse />
-            <ConditionalOutputInLine />
-            <LegacyFunctions />
-            <ArrowFunctions />
-            <ImpliedReturn />
-            <TemplateLiterals />
-            <SimpleArrays />
-            <ArrayIndexAndLength />
-            <AddingAndRemovingToFromArrays />
-            <ForLoops />
-            <MapFunction />
-            <FindFunction />
-            <FindIndex />
-            <FilterFunction />
-            <JsonStringify />
-            <House />
-            <TodoItem />
+            <ul className="list-group">
+                {todos.map((todo: any) => (
+                    <li className="list-group-item" key={todo.id}>
+                        {todo.title}
+                    </li>
+                ))}
+            </ul>
             <hr />
-            <TodoList />
-            <Spreading />
-            <Destructing />
-            <FunctionDestructing />
-            <DestructingImports />
-            <Classes />
-            <Styles />
-            <Add a={3} b={4} />
-            <h4>Square of 4</h4>
-            <Square>4</Square>
-            <hr />
-            <Highlight>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Suscipitratione eaque illo minus cum, saepe totam vel nihil
-                repellat nemo explicabo excepturi consectetur. Modi omnis minus
-                sequi maiores, provident voluptates.
-            </Highlight>
-            <PathParameters />
+            <button onClick={() => { setShow((old) => !old) }} className={`btn ${show ? "btn-danger" : "btn-success"} mb-2`}>{show ? "Hide content" : "Show content"}</button>
+            {show ? (
+                <>
+                    <VariablesAndConstants />
+                    <VariableTypes />
+                    <BooleanVariables />
+                    <IfElse />
+                    <TernaryOperator />
+                    <ConditionalOutputIfElse />
+                    <ConditionalOutputInLine />
+                    <LegacyFunctions />
+                    <ArrowFunctions />
+                    <ImpliedReturn />
+                    <TemplateLiterals />
+                    <SimpleArrays />
+                    <ArrayIndexAndLength />
+                    <AddingAndRemovingToFromArrays />
+                    <ForLoops />
+                    <MapFunction />
+                    <FindFunction />
+                    <FindIndex />
+                    <FilterFunction />
+                    <JsonStringify />
+                    <House />
+                    <TodoItem />
+                    <hr />
+                    <TodoList />
+                    <Spreading />
+                    <Destructing />
+                    <FunctionDestructing />
+                    <DestructingImports />
+                    <Classes />
+                    <Styles />
+                    <Add a={3} b={4} />
+                    <h4>Square of 4</h4>
+                    <Square>4</Square>
+                    <hr />
+                    <Highlight>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Suscipitratione eaque illo minus cum, saepe totam vel
+                        nihil repellat nemo explicabo excepturi consectetur.
+                        Modi omnis minus sequi maiores, provident voluptates.
+                    </Highlight>
+                    <PathParameters />
+                </>
+            ) : null}
         </div>
     );
 }
