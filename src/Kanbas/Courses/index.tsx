@@ -5,12 +5,12 @@ import Home from "./Home";
 import Modules from "./Modules";
 import CoursesNavigation from "./Navigation";
 import { Navigate, Route, Routes, useParams, useLocation } from "react-router";
-import { IoReorderThree } from "react-icons/io5";
 import { FaAlignJustify } from "react-icons/fa6";
-import { courses } from "../Database";
+import { useSelector } from "react-redux";
 export default function Courses() {
     const { cid } = useParams();
-    const course = courses.find((c) => c._id === cid);
+    const { courses } = useSelector((state: any) => state.coursesReducer)
+    const course = courses.find((c: any) => c._id === cid);
     const { pathname } = useLocation();
     return (
         <div id="wd-courses">
