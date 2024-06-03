@@ -7,15 +7,33 @@ import "./styles.css";
 import AssignmentControlButtons from "./AssignmentControlButtons";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { assignments } from "../../Database";
+import { useNavigate } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteAssignment } from "./reducer";
 
-const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const month = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "July",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+];
 
 export default function Assignments() {
     const { cid } = useParams();
-    const courseAssignments = assignments.filter(
-        (assignment) => assignment.course === cid
+    const { assignments } = useSelector(
+        (state: any) => state.assignmentsReducer
     );
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
     return (
         <div id="wd-assignments">
             <div className="d-flex text-nowrap mb-5">
@@ -40,6 +58,13 @@ export default function Assignments() {
                     id="wd-add-assignment"
                     className="float-end btn btn-lg btn-danger"
                     style={{ borderRadius: "0.20rem" }}
+                    onClick={() => {
+                        navigate(
+                            `/Kanbas/Courses/${cid}/Assignments/${new Date()
+                                .getTime()
+                                .toString()}`
+                        );
+                    }}
                 >
                     <BsPlus style={{ marginBottom: "2px" }} className="fs-2" />
                     Assignment
@@ -68,38 +93,53 @@ export default function Assignments() {
             </div>
 
             <ul id="wd-assignment-list" className="list-group rounded-0">
-                {courseAssignments.map((a) => (
-                    <li
-                        key={a._id}
-                        className="wd-assignment-list-item list-group-item d-flex align-items-center p-4"
-                    >
-                        <BsGripVertical
-                            className="me-3 fs-3"
-                            style={{ minWidth: "28px" }}
-                        />
-                        <FaPenToSquare
-                            className="fs-4 me-3 text-success"
-                            style={{ minWidth: "28px" }}
-                        />
-                        <div className="text-secondary flex-fill fs-5 me-3">
-                            <Link
-                                key={`/Kanbas/Courses/${cid}/Assignments/${a._id}`}
-                                to={`/Kanbas/Courses/${cid}/Assignments/${a._id}`}
-                                className="wd-assignment-link text-black text-decoration-none fs-4 fw-bold"
-                            >
-                                {a.title}
-                            </Link>
-                            <br />
-                            <span className="text-danger fw-medium">
-                                Multiple Modules
-                            </span>{" "}
-                            | <strong>Not available until</strong> {getDate(a.available_from? a.available_from : "")} at
-                            12:00am | <strong>Due</strong> {getDate(a.due_date? a.due_date : "")} at 11:59pm | {" "}
-                            {a.points? a.points : "-"} pts{" "}
-                        </div>
-                        <AssignmentControlButtons />
-                    </li>
-                ))}
+                {assignments
+                    .filter((a: any) => a.course === cid)
+                    .map((a: any) => (
+                        
+                        <li
+                            key={a._id}
+                            className="wd-assignment-list-item list-group-item d-flex align-items-center p-4"
+                        >
+                            <BsGripVertical
+                                className="me-3 fs-3"
+                                style={{ minWidth: "28px" }}
+                            />
+                            <FaPenToSquare
+                                className="fs-4 me-3 text-success"
+                                style={{ minWidth: "28px" }}
+                            />
+                            <div className="text-secondary flex-fill fs-5 me-3">
+                                <Link
+                                    key={`/Kanbas/Courses/${cid}/Assignments/${a._id}`}
+                                    to={`/Kanbas/Courses/${cid}/Assignments/${a._id}`}
+                                    className="wd-assignment-link text-black text-decoration-none fs-4 fw-bold"
+                                >
+                                    {a.title}
+                                </Link>
+                                <br />
+                                <span className="text-danger fw-medium">
+                                    Multiple Modules
+                                </span>{" "}
+                                | <strong>Not available until</strong>{" "}
+                                {getDate(
+                                    a.available_from ? a.available_from : ""
+                                )}{" "}
+                                at 12:00am | <strong>Due</strong>{" "}
+                                {getDate(a.due_date ? a.due_date : "")} at
+                                11:59pm | {a.points ? a.points : "-"} pts{" "}
+                            </div>
+                            
+                            <AssignmentControlButtons
+                                key={a._id}
+                                assignmentTitle={a.title}
+                                assignmentId={a._id}
+                                deleteAssignment={(assignmentId) =>
+                                    dispatch(deleteAssignment(assignmentId))
+                                }
+                            />
+                        </li>
+                    ))}
             </ul>
         </div>
     );
@@ -109,12 +149,12 @@ function getDate(date_str: string) {
     const date = new Date(date_str + "T00:00:00.000-05:00");
 
     if (Number.isNaN(date.getMonth())) {
-        return "TBN"
+        return "TBN";
     }
 
     let res = "";
-    res += month[date.getMonth()] + " "
-    res += date.getDate()
+    res += month[date.getMonth()] + " ";
+    res += date.getDate();
 
     return res;
 }

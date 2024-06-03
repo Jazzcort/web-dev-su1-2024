@@ -19,7 +19,6 @@ export default function Kanbas() {
     const [kanbasNav, setKanbasNav] = useState(false);
     const collapsedKanvasRef = useRef<HTMLElement | null>(null);
     const { pathname } = useLocation();
-    // console.log(pathname)
     const pathArr = pathname.split("/");
     const closeKanbasNav = useCallback(() => {
         setKanbasNav(false);
