@@ -11,7 +11,6 @@ export default function AssignmentControlButtons({
     assignmentId: string;
     deleteAssignment: (assignmentId: string) => void;
 }) {
-    console.log(assignmentId, assignmentTitle)
     return (
         <div className="float-end d-flex text-nowrap">
             <GreenCheckmark />

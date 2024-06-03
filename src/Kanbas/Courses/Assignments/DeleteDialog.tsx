@@ -7,7 +7,6 @@ export default function DeleteDialog({
     assignmentId: string,
     deleteAssignment: () => void;
 }) {
-    console.log(assignmentTitle)
     return (
         <div
             id={`wd-delete-assignment-dialog-${assignmentId}`}
