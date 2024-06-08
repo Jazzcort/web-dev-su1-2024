@@ -2,6 +2,7 @@ import React from "react";
 import Labs from "./Labs";
 import { HashRouter, Route, Routes, Navigate } from "react-router-dom";
 import Kanbas from "./Kanbas";
+
 function App() {
     return (
         <HashRouter>
