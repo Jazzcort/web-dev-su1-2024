@@ -1,22 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const images = [
-    "algo.jpg",
-    "app.jpg",
-    "arrow.jpg",
-    "code.jpg",
-    "data.jpg",
-    "keyboard-tape.jpg",
-    "logic-board.jpg",
-    "robot.jpg",
-    "reactjs.jpg",
-];
-
-const randomImage = () => {
-    const ind = Math.floor(Math.random() * images.length);
-    return images[ind];
-};
-
 const initialState = {
     courses: <any>[],
     course: {
@@ -40,7 +23,7 @@ const coursesSlice = createSlice({
             //     _id: new Date().getTime().toString(),
             //     image: `/images/${randomImage()}`,
             // };
-            state.courses = [...state.courses, { ...action.payload, image: `/images/${randomImage()}`}];
+            state.courses = [...state.courses, { ...action.payload }];
         },
         deleteCourse: (state, action) => {
             state.courses = state.courses.filter(
