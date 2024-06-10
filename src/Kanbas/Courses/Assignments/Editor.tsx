@@ -40,7 +40,6 @@ export default function AssignmentEditor() {
                   }-${d.getDate() < 10 ? "0" + d.getDate() : d.getDate()}`,
               }
     );
-    console.log(assignment);
 
     useEffect(() => {
         if (assignments.length === 0) {
