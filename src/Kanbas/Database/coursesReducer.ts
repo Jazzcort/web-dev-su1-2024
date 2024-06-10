@@ -1,7 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import * as db from ".";
-import * as client from "../Courses/client";
-import { act } from "react";
 
 const images = [
     "algo.jpg",
@@ -19,11 +16,6 @@ const randomImage = () => {
     const ind = Math.floor(Math.random() * images.length);
     return images[ind];
 };
-
-// const tmp: any = db.courses.map((item) => ({
-//     ...item,
-//     image: `/images/${randomImage()}`,
-// }));
 
 const initialState = {
     courses: <any>[],
@@ -66,7 +58,6 @@ const coursesSlice = createSlice({
         initializeCourses: (state, action) => {
             state.courses = action.payload.map((item: any) => ({
                 ...item,
-                image: `/images/${randomImage()}`,
             }));
         },
     },
