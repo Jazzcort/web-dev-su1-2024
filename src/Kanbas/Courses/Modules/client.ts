@@ -18,6 +18,7 @@ export const createModule = async (courseId: string, module: any) => {
     );
     return response.data;
 };
+
 export const updateModule = async (module: any) => {
     const response = await axios.put(`${MODULES_API}/${module._id}`, module);
     return response.data;
