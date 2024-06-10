@@ -20,13 +20,13 @@ const randomImage = () => {
     return images[ind];
 };
 
-const tmp: any = db.courses.map((item) => ({
-    ...item,
-    image: `/images/${randomImage()}`,
-}));
+// const tmp: any = db.courses.map((item) => ({
+//     ...item,
+//     image: `/images/${randomImage()}`,
+// }));
 
 const initialState = {
-    courses: tmp,
+    courses: <any>[],
     course: {
         _id: "0",
         name: "New Course",
