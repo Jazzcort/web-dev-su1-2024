@@ -40,6 +40,7 @@ export default function AssignmentEditor() {
                   }-${d.getDate() < 10 ? "0" + d.getDate() : d.getDate()}`,
               }
     );
+    console.log(assignment);
 
     useEffect(() => {
         if (assignments.length === 0) {
@@ -77,15 +78,14 @@ export default function AssignmentEditor() {
                 id="wd-description"
                 className="row form-control mb-3"
                 style={{ height: "200px" }}
+                value={assignment?.description}
                 onChange={(e) =>
                     setAssignment((old: any) => ({
                         ...old,
                         description: e.target.value,
                     }))
                 }
-            >
-                {assignment?.description}
-            </textarea>
+            />
 
             <div className="row mb-3">
                 <label
