@@ -10,12 +10,12 @@ export default function ModuleControlButtons({
 }: {
     moduleId: string;
     deleteModule: (moduleId: string) => void;
-    editModule: (moduleId: string) => void;
+    editModule: () => void;
 }) {
     return (
         <div className="float-end">
             <FaPencil
-                onClick={() => editModule(moduleId)}
+                onClick={() => editModule()}
                 className="text-primary me-3"
             />
             <FaTrash

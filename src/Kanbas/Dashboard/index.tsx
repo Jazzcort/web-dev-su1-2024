@@ -1,10 +1,23 @@
 import "./style.css";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addNewCourse, deleteCourse, updateCourse, setCourse } from "../Database/coursesReducer"
+import {
+    addNewCourse,
+    deleteCourse,
+    updateCourse,
+    setCourse,
+} from "../Database/coursesReducer";
+import * as client from "../Courses/client";
+import useCourses from "../hooks/useCourses";
 export default function Dashboard() {
-    const { courses, course } = useSelector((state: any) => state.coursesReducer);
-    const dispatch = useDispatch();
+    // const { courses, course } = useSelector((state: any) => state.coursesReducer);
+    // const dispatch = useDispatch();
+    const { courses, course, addNewCourseServer, fetchCoursesFromServer, setCourse, deleteCourseServer, updateCourseServer } = useCourses();
+
+    useEffect(() => {
+        fetchCoursesFromServer();
+    }, []);
     return (
         <div>
             <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
@@ -13,7 +26,9 @@ export default function Dashboard() {
                 <button
                     className="btn btn-primary float-end"
                     id="wd-add-new-course-click"
-                    onClick={() => { dispatch(addNewCourse()) }}
+                    onClick={() => {
+                        addNewCourseServer();
+                    }}
                 >
                     {" "}
                     Add{" "}
@@ -21,7 +36,7 @@ export default function Dashboard() {
                 <button
                     id="wd-update-course-click"
                     className="btn btn-warning float-end me-2"
-                    onClick={() => { dispatch(updateCourse()) }}
+                    onClick={() => { updateCourseServer() }}
                 >
                     Update
                 </button>
@@ -30,13 +45,13 @@ export default function Dashboard() {
             <input
                 value={course.name}
                 className="form-control mb-2"
-                onChange={(e) => { dispatch(setCourse({...course, name: e.target.value})) }}
+                onChange={(e) => { setCourse({...course, name: e.target.value}) }}
             />
             <textarea
                 value={course.description}
                 className="form-control"
                 onChange={(e) =>
-                    dispatch(setCourse({...course, description: e.target.value}))
+                    setCourse({...course, description: e.target.value})
                 }
             />
             <hr />
@@ -91,7 +106,7 @@ export default function Dashboard() {
                                             className="btn btn-danger float-end"
                                             onClick={(e) => {
                                                 e.preventDefault();
-                                                dispatch(deleteCourse(c._id))
+                                                deleteCourseServer(c._id)
                                             }}
                                         >
                                             Delete
@@ -101,7 +116,7 @@ export default function Dashboard() {
                                             className="btn btn-warning float-end me-1"
                                             onClick={(e) => {
                                                 e.preventDefault();
-                                                dispatch(setCourse(c))
+                                                setCourse(c);
                                             }}
                                         >
                                             Edit

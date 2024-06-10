@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import * as db from ".";
+import * as client from "../Courses/client";
+import { act } from "react";
 
 const images = [
     "algo.jpg",
@@ -40,13 +42,13 @@ const coursesSlice = createSlice({
     name: "courses",
     initialState,
     reducers: {
-        addNewCourse: (state) => {
-            const newCourse = {
-                ...state.course,
-                _id: new Date().getTime().toString(),
-                image: `/images/${randomImage()}`,
-            };
-            state.courses = [...state.courses, { ...newCourse }];
+        addNewCourse: (state, action) => {
+            // const newCourse = {
+            //     ...state.course,
+            //     _id: new Date().getTime().toString(),
+            //     image: `/images/${randomImage()}`,
+            // };
+            state.courses = [...state.courses, { ...action.payload, image: `/images/${randomImage()}`}];
         },
         deleteCourse: (state, action) => {
             state.courses = state.courses.filter(
@@ -61,9 +63,20 @@ const coursesSlice = createSlice({
         setCourse: (state, action) => {
             state.course = action.payload;
         },
+        initializeCourses: (state, action) => {
+            state.courses = action.payload.map((item: any) => ({
+                ...item,
+                image: `/images/${randomImage()}`,
+            }));
+        },
     },
 });
 
-export const { addNewCourse, deleteCourse, updateCourse, setCourse } =
-    coursesSlice.actions;
+export const {
+    addNewCourse,
+    deleteCourse,
+    updateCourse,
+    setCourse,
+    initializeCourses,
+} = coursesSlice.actions;
 export default coursesSlice.reducer;

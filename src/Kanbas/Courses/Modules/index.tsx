@@ -3,17 +3,27 @@ import ModuleControlButtons from "./ModuleControlButtons";
 import ModulesControls from "./ModulesControls";
 import { BsGripVertical } from "react-icons/bs";
 import { useParams } from "react-router";
-import * as db from "../../Database";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { addModule, editModule, updateModule, deleteModule } from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
+import useModules from "../../hooks/useModules";
 import "./styles.css";
 export default function Modules() {
     const { cid } = useParams();
 
-    const { modules } = useSelector((state: any) => state.modulesReducer);
+    const {
+        modules,
+        setModules,
+        createModuleServer,
+        deleteModuleServer,
+        updateModuleServer,
+    } = useModules();
     const dispatch = useDispatch();
     const [moduleName, setModuleName] = useState("");
+
+    useEffect(() => {
+        setModules(cid ? cid : "");
+    }, []);
 
     return (
         <div>
@@ -21,7 +31,7 @@ export default function Modules() {
                 setModuleName={setModuleName}
                 moduleName={moduleName}
                 addModule={() => {
-                    dispatch(addModule({ name: moduleName, course: cid }));
+                    createModuleServer(cid ? cid : "", { name: moduleName });
                 }}
             />
             <br />
@@ -44,21 +54,17 @@ export default function Modules() {
                                     <input
                                         className="form-control w-50 d-inline-block"
                                         onChange={(e) =>
-                                            dispatch(
-                                                updateModule({
-                                                    ...m,
-                                                    name: e.target.value,
-                                                })
-                                            )
+                                            updateModuleServer({
+                                                ...m,
+                                                name: e.target.value,
+                                            })
                                         }
                                         onKeyDown={(e) => {
                                             if (e.key === "Enter") {
-                                                dispatch(
-                                                    updateModule({
-                                                        ...m,
-                                                        editing: false,
-                                                    })
-                                                );
+                                                updateModuleServer({
+                                                    ...m,
+                                                    editing: false,
+                                                });
                                             }
                                         }}
                                         value={m.name}
@@ -68,10 +74,10 @@ export default function Modules() {
                                 <ModuleControlButtons
                                     moduleId={m._id}
                                     deleteModule={(moduleId) =>
-                                        dispatch(deleteModule(moduleId))
+                                        deleteModuleServer(moduleId)
                                     }
-                                    editModule={(moduleId) =>
-                                        dispatch(editModule(moduleId))
+                                    editModule={() =>
+                                        updateModuleServer({...m, editing: true})
                                     }
                                 />
                             </div>

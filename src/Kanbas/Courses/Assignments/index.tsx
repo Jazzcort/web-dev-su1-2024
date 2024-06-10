@@ -8,8 +8,8 @@ import AssignmentControlButtons from "./AssignmentControlButtons";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
-import { useSelector, useDispatch } from "react-redux";
-import { deleteAssignment } from "./reducer";
+import useAssignments from "../../hooks/useAssignments";
+import { useEffect } from "react";
 
 const month = [
     "Jan",
@@ -28,12 +28,14 @@ const month = [
 
 export default function Assignments() {
     const { cid } = useParams();
-    const { assignments } = useSelector(
-        (state: any) => state.assignmentsReducer
-    );
-    const dispatch = useDispatch();
 
+    const {assignments, setAssignments, deleteAssignmentServer} = useAssignments();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        setAssignments(cid? cid: "");
+    }, [])
+
     return (
         <div id="wd-assignments">
             <div className="d-flex text-nowrap mb-5">
@@ -135,7 +137,7 @@ export default function Assignments() {
                                 assignmentTitle={a.title}
                                 assignmentId={a._id}
                                 deleteAssignment={(assignmentId) =>
-                                    dispatch(deleteAssignment(assignmentId))
+                                    deleteAssignmentServer(assignmentId)
                                 }
                             />
                         </li>

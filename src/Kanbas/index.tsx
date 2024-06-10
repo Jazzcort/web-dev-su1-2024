@@ -14,19 +14,21 @@ import { courses, assignments } from "./Database";
 import store from "./store";
 import { Provider } from "react-redux";
 
+
 export default function Kanbas() {
     const [coursesNav, setCoursesNav] = useState(false);
     const [kanbasNav, setKanbasNav] = useState(false);
     const collapsedKanvasRef = useRef<HTMLElement | null>(null);
     const { pathname } = useLocation();
     const pathArr = pathname.split("/");
+
     const closeKanbasNav = useCallback(() => {
         setKanbasNav(false);
     }, []);
 
     const closeCoursesNav = useCallback(() => {
         setCoursesNav(false);
-    }, []);
+    }, []);    
 
     useEffect(() => {
         collapsedKanvasRef.current = document.getElementById(
