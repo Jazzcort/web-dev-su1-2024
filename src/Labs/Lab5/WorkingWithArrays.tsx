@@ -103,30 +103,37 @@ export default function WorkingWithArrays() {
                 }
             />
 
-            <a
-                href={`${API}/${todo.id}/completed/${todo.completed}`}
-                className="btn btn-primary float-end"
-            >
-                Complete Todo ID = {todo.id}
-            </a>
-            <input
-                value={todo.id}
-                className="form-control w-25  me-2 float-start"
-                onChange={(e) => setTodo({ ...todo, id: e.target.value })}
-            />
+            <div className="d-flex flex-column w-50 border p-2 rounded-2">
+                <input
+                    value={todo.id}
+                    className="form-control w-25  me-2"
+                    onChange={(e) => setTodo({ ...todo, id: e.target.value })}
+                />
+                <div className="form-check form-switch">
+                    <input
+                        id="wd-todo-complete"
+                        type="checkbox"
+                        className="form-check-input me-2"
+                        checked={todo.completed}
+                        onChange={(e) =>
+                            setTodo({ ...todo, completed: e.target.checked })
+                        }
+                    />
+                    <label
+                        htmlFor="wd-todo-complete"
+                        className="form-check-label"
+                    >
+                        Complete
+                    </label>
+                </div>
+                <a
+                    href={`${API}/${todo.id}/completed/${todo.completed}`}
+                    className="btn btn-primary"
+                >
+                    Complete Todo ID = {todo.id}
+                </a>
+            </div>
 
-            <input
-                id="wd-todo-complete"
-                type="checkbox"
-                className="form-check-input me-2"
-                checked={todo.completed}
-                onChange={(e) =>
-                    setTodo({ ...todo, completed: e.target.checked })
-                }
-            />
-            <label htmlFor="wd-todo-complete" className="form-check-label">
-                Complete
-            </label>
             <br />
             <br />
             <hr />

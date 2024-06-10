@@ -13,6 +13,22 @@ export const updateTitle = async (title: string) => {
     const response = await axios.get(`${ASSIGNMENT_API}/title/${title}`);
     return response.data;
 };
+export const updateDescription = async (description: string) => {
+    const response = await axios.get(
+        `${ASSIGNMENT_API}/description/${description}`
+    );
+    return response.data;
+};
+export const updateCompleted = async (completed: string) => {
+    const response = await axios.get(
+        `${ASSIGNMENT_API}/completed/${completed}`
+    );
+    return response.data;
+};
+export const updateDate = async (date: string) => {
+    const response = await axios.get(`${ASSIGNMENT_API}/date/${date}`)
+    return response.data;
+}
 
 const TODOS_API = `${REMOTE_SERVER}/lab5/todos`;
 export const fetchTodos = async () => {

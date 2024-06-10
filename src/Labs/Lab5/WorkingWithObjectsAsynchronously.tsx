@@ -10,10 +10,23 @@ export default function WorkingWithObjectsAsynchronously() {
         const updatedAssignment = await client.updateTitle(title);
         setAssignment(updatedAssignment);
     };
+    const updateDescription = async (description: string) => {
+        const updatedAssignment = await client.updateDescription(description);
+        setAssignment(updatedAssignment);
+    };
+    const updateCompleted = async (completed: string) => {
+        const updatedAssignment = await client.updateCompleted(completed);
+        setAssignment(updatedAssignment);
+    };
+    const updateDate = async (date: string) => {
+        const updatedAssignment = await client.updateDate(date);
+        setAssignment(updatedAssignment);
+    };
 
     useEffect(() => {
         fetchAssignment();
     }, []);
+
     return (
         <div id="wd-asynchronous-objects">
             <h3>Working with Objects Asynchronously</h3>
@@ -66,6 +79,24 @@ export default function WorkingWithObjectsAsynchronously() {
                 onClick={() => updateTitle(assignment.title)}
             >
                 Update Title
+            </button>
+            <button
+                className="btn btn-primary me-2"
+                onClick={() => updateDescription(assignment.description)}
+            >
+                Update Description 
+            </button>
+            <button
+                className="btn btn-primary me-2"
+                onClick={() => updateCompleted(assignment.completed as string)}
+            >
+                Update Completed 
+            </button>
+            <button
+                className="btn btn-primary me-2"
+                onClick={() => updateDate(assignment.due)}
+            >
+                Update Due
             </button>
             <pre>{JSON.stringify(assignment, null, 2)}</pre>
             <hr />

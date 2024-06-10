@@ -41,7 +41,7 @@ export default function WorkingWithObjects() {
                 className="btn btn-primary float-end"
                 href={`${ASSIGNMENT_API_URL}/score/${assignment.score}`}
             >
-                Update Score 
+                Update Score
             </a>
             <input
                 type="number"
@@ -60,10 +60,24 @@ export default function WorkingWithObjects() {
                 className="btn btn-primary float-end"
                 href={`${ASSIGNMENT_API_URL}/completed/${assignment.completed}`}
             >
-                Update Completed Property 
+                Update Completed Property
             </a>
-            <input type="checkbox" id="wd-assignment-completed" className="me-2 form-check-input" checked={assignment.completed} onChange={(e) => setAssignment((old) => ({...old, completed: e.target.checked}))}/>
-            <label htmlFor="wd-assignment-completed">Completed</label>
+            <div className="form-check form-switch">
+                <input
+                    type="checkbox"
+                    id="wd-assignment-completed"
+                    className="me-2 form-check-input"
+                    checked={assignment.completed}
+                    onChange={(e) =>
+                        setAssignment((old) => ({
+                            ...old,
+                            completed: e.target.checked,
+                        }))
+                    }
+                />
+                <label htmlFor="wd-assignment-completed">Completed</label>
+            </div>
+
             <hr />
 
             <h4>Retrieving Objects</h4>
@@ -105,15 +119,18 @@ export default function WorkingWithObjects() {
                 id="wd-update-module-description"
                 className="btn btn-primary float-end"
             >
-                Update Description 
+                Update Description
             </a>
             <textarea
                 id="wd-module-description"
                 className="form-control mb-2"
-                style={{width: "60%"}}
+                style={{ width: "60%" }}
                 value={module.description}
                 onChange={(e) =>
-                    setModule((old) => ({ ...old, description: e.target.value }))
+                    setModule((old) => ({
+                        ...old,
+                        description: e.target.value,
+                    }))
                 }
             />
             <a
