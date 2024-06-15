@@ -8,7 +8,6 @@ export const findAssignmentsForCourse = async (courseId: string) => {
     return response.data;
 }
 
-
 export const deleteAssignment = async (assignmentId: string) => {
     const response = await axios.delete(`${ASSIGNMENTS_API}/${assignmentId}`);
     return response.data;

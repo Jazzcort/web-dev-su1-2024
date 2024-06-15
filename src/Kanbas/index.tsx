@@ -13,6 +13,8 @@ import { useLocation, useParams } from "react-router";
 import { courses, assignments } from "./Database";
 import store from "./store";
 import { Provider } from "react-redux";
+import Account from "./Account";
+import ProtectedRoute from "./ProtectedRoute";
 
 
 export default function Kanbas() {
@@ -122,16 +124,16 @@ export default function Kanbas() {
                                     element={<Navigate to="Dashboard" />}
                                 />
                                 <Route
-                                    path="Account"
-                                    element={<h1>Account</h1>}
+                                    path="Account/*"
+                                    element={<Account />}
                                 />
                                 <Route
                                     path="Dashboard"
-                                    element={<Dashboard />}
+                                    element={<ProtectedRoute children={<Dashboard />}/>}
                                 />
                                 <Route
                                     path="Courses/:cid/*"
-                                    element={<Courses />}
+                                    element={<ProtectedRoute children={<Courses />} />}
                                 />
                                 <Route
                                     path="Calendar"
