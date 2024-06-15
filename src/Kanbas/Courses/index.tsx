@@ -7,9 +7,10 @@ import CoursesNavigation from "./Navigation";
 import { Navigate, Route, Routes, useParams, useLocation } from "react-router";
 import { FaAlignJustify } from "react-icons/fa6";
 import { useSelector } from "react-redux";
+import PeopleTable from "./People/Table";
 export default function Courses() {
     const { cid } = useParams();
-    const { courses } = useSelector((state: any) => state.coursesReducer)
+    const { courses } = useSelector((state: any) => state.coursesReducer);
     const course = courses.find((c: any) => c._id === cid);
     const { pathname } = useLocation();
     return (
@@ -35,6 +36,8 @@ export default function Courses() {
                             path="Assignments/:aid"
                             element={<AssignmentEditor />}
                         />
+                        <Route path="People" element={<PeopleTable />} />
+                        <Route path="People/:uid" element={<PeopleTable />} />
                         <Route path="Quizzes" element={<h2>Quizzes</h2>} />
                         <Route path="Grades" element={<Grades />} />
                     </Routes>
