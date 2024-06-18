@@ -40,7 +40,7 @@ export default function Modules() {
             <br />
             <ul id="wd-modules" className="list-group rounded-0 text-nowrap">
                 {modules
-                    .filter((m: any) => m.course === cid)
+   
                     .map((m: any) => (
                         <li className="wd-module list-group-item p-0 mb-5 fs-5 border-gray">
                             <div className="wd-title p-3 ps-2 bg-secondary fw-bold d-flex">

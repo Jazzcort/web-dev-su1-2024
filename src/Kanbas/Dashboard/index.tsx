@@ -96,7 +96,7 @@ export default function Dashboard() {
                                             {c.description}
                                         </p>
                                         <Link
-                                            to={`/Kanbas/Courses/${c._id}/Home`}
+                                            to={`/Kanbas/Courses/${c.number}/Home`}
                                             className="btn btn-primary"
                                         >
                                             Go
